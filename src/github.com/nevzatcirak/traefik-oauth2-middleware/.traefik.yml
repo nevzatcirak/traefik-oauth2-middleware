@@ -1,0 +1,11 @@
+displayName: OAuth 2.0 Token Introspection Middleware
+type: middleware
+
+import: github.com/nevzatcirak/traefik-oauth2-middleware
+
+summary: '[OAuth 2.0 Token Introspection Middleware'
+
+testData:
+  Headers:
+    X-Demo: test
+    X-URL: '{{URL}}'

@@ -6,11 +6,11 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/nevzatcirak/traefik-oauth2-middleware"
+	middleware "github.com/nevzatcirak/traefik-oauth2-middleware"
 )
 
 func TestDemo(t *testing.T) {
-	cfg := plugindemo.CreateConfig()
+	cfg := middleware.CreateConfig()
 	cfg.Headers["X-Host"] = "[[.Host]]"
 	cfg.Headers["X-Method"] = "[[.Method]]"
 	cfg.Headers["X-URL"] = "[[.URL]]"
@@ -20,7 +20,7 @@ func TestDemo(t *testing.T) {
 	ctx := context.Background()
 	next := http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {})
 
-	handler, err := plugindemo.New(ctx, next, cfg, "demo-plugin")
+	handler, err := middleware.New(ctx, next, cfg, "demo-plugin")
 	if err != nil {
 		t.Fatal(err)
 	}
